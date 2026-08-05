@@ -5,60 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Solitaire Collection</title>
 <style>
-  body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222; }
-  h1 { font-size: 26px; }
-  h2 { font-size: 19px; margin-top: 32px; }
-  p, li { font-size: 15px; }
-  footer { margin-top: 48px; font-size: 13px; color: #777; }
+  :root {
+    --felt-dark: #0b3d2e;
+    --felt: #12523f;
+    --gold: #e8c56b;
+    --gold-soft: #f3dfa3;
+    --text: #f4f1e8;
+    --text-muted: #b9c9c0;
+    --card-bg: #0f4536;
+    --border: rgba(232, 197, 107, 0.25);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 50% -10%, var(--felt) 0%, var(--felt-dark) 55%, #06251c 100%);
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 80px;
+  }
+  .wrap { max-width: 700px; width: 100%; }
+  .back {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+  .back:hover { color: var(--gold); }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 44px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  h1 {
+    font-size: 30px;
+    margin: 0 0 6px;
+    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .updated { font-size: 13px; color: var(--text-muted); margin: 0 0 28px; }
+  h2 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin: 32px 0 12px;
+  }
+  p, li { font-size: 15px; line-height: 1.7; color: var(--text); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  a { color: var(--gold-soft); }
+  a:hover { color: var(--gold); }
+  strong { color: var(--gold-soft); }
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
 </style>
 </head>
 <body>
 
-<h1>Privacy Policy</h1>
-<p><strong>Last updated:</strong> August 2026</p>
+<div class="wrap">
+  <a class="back" href="/">← enpe5v3</a>
+  <div class="card">
+    <h1>Privacy Policy</h1>
+    <p class="updated"><strong>Last updated:</strong> August 2026</p>
 
-<p>This Privacy Policy describes how the app ("we", "the App") collects, uses, and shares information when you use our solitaire card games (Klondike, Spider, Yukon).</p>
+    <p>This Privacy Policy describes how the app ("we", "the App") collects, uses, and shares information when you use our solitaire card games (Klondike, Spider, Yukon).</p>
 
-<h2>Information We Collect</h2>
-<p>The App may collect the following categories of information through third-party services (ad mediation and analytics providers) used within the App:</p>
-<ul>
-  <li>App activity (e.g. interactions, crash logs, diagnostics)</li>
-  <li>Device identifiers (e.g. advertising ID)</li>
-  <li>App performance data</li>
-</ul>
-<p>We do not require account creation and do not collect your name, email address, or payment information directly.</p>
+    <h2>Information We Collect</h2>
+    <p>The App may collect the following categories of information through third-party services (ad mediation and analytics providers) used within the App:</p>
+    <ul>
+      <li>App activity (e.g. interactions, crash logs, diagnostics)</li>
+      <li>Device identifiers (e.g. advertising ID)</li>
+      <li>App performance data</li>
+    </ul>
+    <p>We do not require account creation and do not collect your name, email address, or payment information directly.</p>
 
-<h2>How We Use Information</h2>
-<ul>
-  <li>To display and measure advertising within the App</li>
-  <li>To understand app performance and fix issues</li>
-  <li>To improve gameplay features over time</li>
-</ul>
+    <h2>How We Use Information</h2>
+    <ul>
+      <li>To display and measure advertising within the App</li>
+      <li>To understand app performance and fix issues</li>
+      <li>To improve gameplay features over time</li>
+    </ul>
 
-<h2>Third-Party Services</h2>
-<p>The App uses third-party advertising mediation and analytics SDKs to serve ads and measure app usage. These providers may collect data as described in their own privacy policies. Providers may include, but are not limited to, Google AdMob and Google Analytics for Firebase.</p>
-<ul>
-  <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
-</ul>
+    <h2>Third-Party Services</h2>
+    <p>The App uses third-party advertising mediation and analytics SDKs to serve ads and measure app usage. These providers may collect data as described in their own privacy policies. Providers may include, but are not limited to, Google AdMob and Google Analytics for Firebase.</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+    </ul>
 
-<h2>Data Security</h2>
-<p>Data transmitted through third-party SDKs used in the App is encrypted in transit. We do not sell your personal information.</p>
+    <h2>Data Security</h2>
+    <p>Data transmitted through third-party SDKs used in the App is encrypted in transit. We do not sell your personal information.</p>
 
-<h2>Your Choices</h2>
-<p>You can request deletion of data associated with your device identifier by contacting us at the email below. You can also reset your advertising ID or opt out of personalized ads in your device settings.</p>
+    <h2>Your Choices</h2>
+    <p>You can request deletion of data associated with your device identifier by contacting us at the email below. You can also reset your advertising ID or opt out of personalized ads in your device settings.</p>
 
-<h2>Children's Privacy</h2>
-<p>The App is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
+    <h2>Children's Privacy</h2>
+    <p>The App is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
 
-<h2>Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
 
-<h2>Contact Us</h2>
-<p>If you have questions about this Privacy Policy, contact us at: <strong>enpe5v3ldj1nnhelper@gmail.com</strong></p>
+    <h2>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, contact us at: <strong>enpe5v3ldj1nnhelper@gmail.com</strong></p>
 
-<footer>
-  Solitaire Collection — Privacy Policy
-</footer>
+    <footer>Solitaire Collection — Privacy Policy</footer>
+  </div>
+</div>
 
 </body>
 </html>
