@@ -2,11 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=/">
-<link rel="canonical" href="https://enpe5v3ldj1nn.github.io/">
-<title>Molfar Digital — Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yukon Solitaire: Move Any Card</title>
+<style>
+  :root {
+    --felt-dark: #0b3d2e;
+    --felt: #12523f;
+    --gold: #e8c56b;
+    --gold-soft: #f3dfa3;
+    --text: #f4f1e8;
+    --text-muted: #b9c9c0;
+    --card-bg: #0f4536;
+    --border: rgba(232, 197, 107, 0.25);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 50% -10%, var(--felt) 0%, var(--felt-dark) 55%, #06251c 100%);
+    display: flex;
+    justify-content: center;
+    padding: 64px 20px;
+  }
+  .wrap { max-width: 640px; width: 100%; }
+  .back {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+  .back:hover { color: var(--gold); }
+  .suits {
+    font-size: 22px;
+    letter-spacing: 14px;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 16px;
+    letter-spacing: 0.5px;
+    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 36px;
+  }
+  .links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .links a {
+    color: var(--felt-dark);
+    background: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .links a:hover { background: var(--gold-soft); transform: translateY(-1px); }
+  footer {
+    margin-top: 56px;
+    font-size: 12px;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+</style>
 </head>
 <body>
-<p>This page has moved. <a href="/">Go to Molfar Digital — Games</a>.</p>
+
+<div class="wrap">
+  <a class="back" href="/">← Molfar Digital</a>
+  <div class="suits">♠ ♥ ♦ ♣</div>
+  <h1>Yukon Solitaire: Move Any Card</h1>
+  <p class="desc">
+    No stock pile — all 52 cards are dealt face up, so you're solving the
+    board in front of you, not waiting on the next draw. Every deal is
+    solver-verified, undo is unlimited, and Klondike &amp; Spider are
+    included. No account, no internet, no setup.
+  </p>
+
+  <div class="links">
+    <a href="/solitaire-collection/privacy.html">Privacy Policy</a>
+    <a href="/solitaire-collection/terms.html">Terms of Use</a>
+  </div>
+
+  <footer>© 2026 Molfar Digital</footer>
+</div>
+
 </body>
 </html>
