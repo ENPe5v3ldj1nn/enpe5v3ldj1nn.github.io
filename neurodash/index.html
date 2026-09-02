@@ -64,6 +64,11 @@
     color: var(--text);
     margin: 0 0 36px;
   }
+  .stores {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
   .cta {
     display: inline-flex;
     align-items: center;
@@ -79,6 +84,13 @@
     box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
   }
   .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35); }
+  .cta.secondary {
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+  .cta.secondary:hover { border-color: var(--cyan); box-shadow: none; }
   .links {
     display: flex;
     gap: 10px;
@@ -131,9 +143,14 @@
     No account, no setup — just open it and train.
   </p>
 
-  <a class="cta" href="https://play.google.com/store/apps/details?id=com.enpe5v3.neurodash" target="_blank" rel="noopener">
-    ▶ Get it on Google Play
-  </a>
+  <div class="stores">
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.enpe5v3.neurodash" target="_blank" rel="noopener">
+      ▶ Get it on Google Play
+    </a>
+    <a class="cta secondary" href="https://apps.apple.com/app/id6775243664" target="_blank" rel="noopener">
+       Download on the App Store
+    </a>
+  </div>
 
   <div class="links">
     <a href="/neurodash/privacy.html">Privacy Policy</a>

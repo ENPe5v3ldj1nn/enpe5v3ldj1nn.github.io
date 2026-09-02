@@ -74,6 +74,22 @@
     transition: background 0.15s ease, transform 0.15s ease;
   }
   .links a:hover { background: var(--gold-soft); transform: translateY(-1px); }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--felt-dark);
+    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 8px 24px rgba(232, 197, 107, 0.2);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(232, 197, 107, 0.3); }
   h2 {
     font-size: 12px;
     text-transform: uppercase;
@@ -105,6 +121,10 @@
     solver-verified, undo is unlimited, and Klondike &amp; Spider are
     included. No account, no internet, no setup.
   </p>
+
+  <a class="cta" href="https://play.google.com/store/apps/details?id=com.enpe5v3.solitairecollection" target="_blank" rel="noopener">
+    ▶ Get it on Google Play
+  </a>
 
   <div class="links">
     <a href="/yukon-solitaire/privacy.html">Privacy Policy</a>
