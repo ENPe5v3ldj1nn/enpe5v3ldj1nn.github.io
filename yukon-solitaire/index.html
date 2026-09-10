@@ -26,8 +26,9 @@
     display: flex;
     justify-content: center;
     padding: 64px 20px;
+    overflow-x: hidden;
   }
-  .wrap { max-width: 640px; width: 100%; }
+  .wrap { max-width: 640px; width: 100%; position: relative; z-index: 1; }
   .back {
     display: inline-block;
     font-size: 13px;
@@ -74,6 +75,39 @@
     transition: background 0.15s ease, transform 0.15s ease;
   }
   .links a:hover { background: var(--gold-soft); transform: translateY(-1px); }
+  .bg-shots {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-shots img {
+    position: absolute;
+    width: 260px;
+    aspect-ratio: 9 / 20;
+    object-fit: cover;
+    border-radius: 26px;
+    filter: saturate(1.1) contrast(1.03);
+    opacity: 1;
+    box-shadow: 0 0 60px 4px rgba(232, 197, 107, 0.22), inset 0 0 0 1px rgba(232, 197, 107, 0.35);
+  }
+  .bg-shots::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(11,61,46,0.15) 0%, var(--felt-dark) 100%);
+  }
+  .bg-shots img:nth-child(6n+1) { top: -4vh; left: -1vw; transform: rotate(-12deg); }
+  .bg-shots img:nth-child(6n+2) { top: 4vh; right: -2vw; transform: rotate(10deg); }
+  .bg-shots img:nth-child(6n+3) { top: 38vh; left: -4vw; transform: rotate(7deg); }
+  .bg-shots img:nth-child(6n+4) { top: 34vh; right: 9vw; transform: rotate(-8deg); }
+  .bg-shots img:nth-child(6n+5) { bottom: -4vh; left: 9vw; transform: rotate(-6deg); }
+  .bg-shots img:nth-child(6n+6) { bottom: -2vh; right: -1vw; transform: rotate(9deg); }
+  @media (max-width: 640px) {
+    .bg-shots img { width: 170px; opacity: 0.6; }
+  }
   .cta {
     display: inline-flex;
     align-items: center;
@@ -111,6 +145,8 @@
 </head>
 <body>
 
+<div class="bg-shots" id="bg-shots"></div>
+
 <div class="wrap">
   <a class="back" href="/">← Molfar Digital</a>
   <div class="suits">♠ ♥ ♦ ♣</div>
@@ -138,6 +174,27 @@
 
   <footer>© 2026 Molfar Digital</footer>
 </div>
+
+<script>
+  // List every file dropped into /yukon-solitaire/screenshots/ here —
+  // each one gets inserted as a frame automatically.
+  (function () {
+    var files = [
+      '01_Move_any_face-up_card._No_stock_pile..png',
+      '02_Unlimited_undo_—_no_penalty.png',
+      '03_Klondike,_Draw_1.png',
+      '04_Spider,_one_suit.png',
+      "05_Your_record,_not_a_stranger's.png",
+      '06_One_tap_to_finish.png'
+    ];
+    var layer = document.getElementById('bg-shots');
+    files.forEach(function (file) {
+      var img = new Image();
+      img.onload = function () { layer.appendChild(img); };
+      img.src = 'screenshots/' + encodeURIComponent(file);
+    });
+  })();
+</script>
 
 </body>
 </html>

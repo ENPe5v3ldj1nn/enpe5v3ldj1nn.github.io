@@ -27,8 +27,9 @@
     display: flex;
     justify-content: center;
     padding: 64px 20px;
+    overflow-x: hidden;
   }
-  .wrap { max-width: 640px; width: 100%; }
+  .wrap { max-width: 640px; width: 100%; position: relative; z-index: 1; }
   .back {
     display: inline-block;
     font-size: 13px;
@@ -84,6 +85,39 @@
     box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
   }
   .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35); }
+  .bg-shots {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-shots img {
+    position: absolute;
+    width: 260px;
+    aspect-ratio: 9 / 20;
+    object-fit: cover;
+    border-radius: 26px;
+    filter: saturate(1.1) contrast(1.03);
+    opacity: 1;
+    box-shadow: 0 0 60px 4px rgba(139, 92, 246, 0.28), inset 0 0 0 1px rgba(34, 211, 238, 0.35);
+  }
+  .bg-shots::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(26,16,48,0.15) 0%, var(--bg-dark) 100%);
+  }
+  .bg-shots img:nth-child(6n+1) { top: -4vh; left: -1vw; transform: rotate(-12deg); }
+  .bg-shots img:nth-child(6n+2) { top: 4vh; right: -2vw; transform: rotate(10deg); }
+  .bg-shots img:nth-child(6n+3) { top: 38vh; left: -4vw; transform: rotate(7deg); }
+  .bg-shots img:nth-child(6n+4) { top: 34vh; right: 9vw; transform: rotate(-8deg); }
+  .bg-shots img:nth-child(6n+5) { bottom: -4vh; left: 9vw; transform: rotate(-6deg); }
+  .bg-shots img:nth-child(6n+6) { bottom: -2vh; right: -1vw; transform: rotate(9deg); }
+  @media (max-width: 640px) {
+    .bg-shots img { width: 170px; opacity: 0.6; }
+  }
   .cta.secondary {
     color: var(--text);
     background: var(--card-bg);
@@ -132,6 +166,8 @@
 </head>
 <body>
 
+<div class="bg-shots" id="bg-shots"></div>
+
 <div class="wrap">
   <a class="back" href="/">← Molfar Digital</a>
   <div class="badge">🔥 Reaction &amp; Memory Training</div>
@@ -164,6 +200,26 @@
 
   <footer>© 2026 Molfar Digital</footer>
 </div>
+
+<script>
+  // List every file dropped into /neurodash/screenshots/ here —
+  // each one gets inserted as a frame automatically.
+  (function () {
+    var files = [
+      'Image Sequence_032_0000.jpg',
+      'Image Sequence_033_0000.jpg',
+      'Image Sequence_035_0000.jpg',
+      'Image Sequence_036_0000.jpg',
+      'Image Sequence_037_0000.jpg'
+    ];
+    var layer = document.getElementById('bg-shots');
+    files.forEach(function (file) {
+      var img = new Image();
+      img.onload = function () { layer.appendChild(img); };
+      img.src = 'screenshots/' + encodeURIComponent(file);
+    });
+  })();
+</script>
 
 </body>
 </html>
