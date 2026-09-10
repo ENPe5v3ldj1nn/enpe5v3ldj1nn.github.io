@@ -5,106 +5,164 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Molfar Digital — Games</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Sora:wght@400;500;600&display=swap');
   :root {
-    --bg: #f7f7f8;
-    --text: #1c1c1e;
-    --text-muted: #6b6b70;
-    --card-bg: #ffffff;
-    --border: #e3e3e6;
-    --accent: #3a5aff;
+    --color-bg: #0a0e15;
+    --color-surface: #11151f;
+    --color-text: #eef1f7;
+    --color-text-muted: #8b96a8;
+    --accent: #22d3ee;
+    --accent-soft: rgba(34, 211, 238, 0.12);
+    --divider: rgba(148, 163, 184, 0.14);
+    --font-heading: "Space Grotesk", system-ui, sans-serif;
+    --font-body: "Sora", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
   body {
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
-    color: var(--text);
-    background: var(--bg);
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background:
+      radial-gradient(circle at 20% -10%, rgba(34, 211, 238, 0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.07) 0%, transparent 40%),
+      var(--color-bg);
     display: flex;
     justify-content: center;
     padding: 64px 20px;
   }
-  .wrap { max-width: 600px; width: 100%; }
-  h1 {
-    font-size: 28px;
-    margin: 0 0 8px;
-    letter-spacing: 0.2px;
-  }
-  .tagline {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin: 0 0 40px;
-  }
-  h2 {
+  .wrap { max-width: 640px; width: 100%; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
     font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+  }
+  h1.display {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 44px;
     margin: 0 0 14px;
+    letter-spacing: -0.01em;
+    background: linear-gradient(100deg, var(--color-text) 20%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #a6afc0;
+    margin: 0 0 8px;
+    max-width: 520px;
+  }
+  h2.section-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7488;
+    margin: 44px 0 16px;
+  }
+  .card-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
   .game-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 22px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 18px;
+    background: var(--color-surface);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    padding: 22px 24px;
     text-decoration: none;
     color: inherit;
+    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .game-card:hover { border-color: var(--accent); }
+  .game-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    box-shadow: 0 0 0 1px var(--divider), 0 0 32px -8px var(--accent);
+    transform: translateY(-2px);
+  }
+  .game-card:hover .game-name { color: var(--accent); }
+  .game-icon {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #171c29;
+  }
+  .game-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .game-body { flex: 1; min-width: 0; }
   .game-name {
-    font-size: 16px;
+    font-family: var(--font-heading);
     font-weight: 600;
+    font-size: 18px;
     margin: 0 0 4px;
+    color: var(--color-text);
   }
-  .game-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin: 0;
+  .game-desc { font-size: 13.5px; margin: 0; color: var(--color-text-muted); }
+  .game-arrow { flex: none; color: var(--accent); }
+  .support-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--color-text);
+    text-decoration: none;
   }
-  .arrow { color: var(--accent); flex-shrink: 0; font-size: 18px; }
-  .support {
-    margin-top: 40px;
-  }
-  .support a { color: var(--accent); text-decoration: none; }
-  .support a:hover { text-decoration: underline; }
+  .support-row:hover { color: var(--accent); }
+  .support-row svg { flex: none; color: var(--accent); }
   footer {
     margin-top: 56px;
-    font-size: 12px;
-    color: var(--text-muted);
+    padding-top: 20px;
+    border-top: 1px solid var(--divider);
+    font-size: 12.5px;
+    color: #6b7488;
   }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <h1>Molfar Digital</h1>
-  <p class="tagline">Independent mobile game developer.</p>
+  <div class="eyebrow">Independent mobile game studio</div>
+  <h1 class="display">Molfar Digital</h1>
+  <p class="lede">Small, focused mobile games — built to be picked up in a spare minute and hard to put back down.</p>
 
-  <h2>Games</h2>
-  <a class="game-card" href="/yukon-solitaire/">
-    <div>
-      <p class="game-name">Yukon Solitaire: Move Any Card</p>
-      <p class="game-desc">No stock pile. Move any face-up card with the pile on top of it.</p>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-
-  <a class="game-card" href="/neurodash/" style="margin-top:12px;">
-    <div>
-      <p class="game-name">NeuroDash</p>
-      <p class="game-desc">Fast-paced reaction and memory training. Tap, dodge fakes, and remember chains.</p>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-
-  <h2 style="margin-top:40px;">Support</h2>
-  <div class="support">
-    <a href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com</a>
+  <h2 class="section-label">Games</h2>
+  <div class="card-row">
+    <a class="game-card" href="/yukon-solitaire/">
+      <div class="game-icon"><img src="assets/icon-yukon.png" alt="Yukon Solitaire icon"></div>
+      <div class="game-body">
+        <p class="game-name">Yukon Solitaire: Move Any Card</p>
+        <p class="game-desc">No stock pile. Move any face-up card with the pile on top of it.</p>
+      </div>
+      <span class="game-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="game-card" href="/neurodash/">
+      <div class="game-icon"><img src="assets/icon-neurodash.png" alt="NeuroDash icon"></div>
+      <div class="game-body">
+        <p class="game-name">NeuroDash</p>
+        <p class="game-desc">Fast-paced reaction and memory training. Tap, dodge fakes, and remember chains.</p>
+      </div>
+      <span class="game-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
   </div>
+
+  <h2 class="section-label">Support</h2>
+  <a class="support-row" href="mailto:enpe5v3ldj1nnhelper@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> enpe5v3ldj1nnhelper@gmail.com</a>
 
   <footer>© 2026 Molfar Digital</footer>
 </div>
