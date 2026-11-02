@@ -124,7 +124,8 @@
   .ph.b { transform: rotate(7deg) translateX(40px) translateY(60px); position: absolute; opacity: .95; width: min(270px, 25vw); }
 
   .intro { background: var(--paper); color: var(--ink); grid-template-columns: 1fr; }
-  .intro h1 { font-size: clamp(60px, 12.5vw, 200px); margin: 0; }
+  /* line-height .96 (not .88): the "g" of "games." must clear the "M" of "Made solo." */
+  .intro h1 { font-size: clamp(56px, 10.5vw, 168px); line-height: .96; margin: 0; }
   .intro .row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 6vh; gap: 30px; flex-wrap: wrap; }
   .intro .lead { opacity: .7; }
   .icons { display: flex; gap: 14px; }
