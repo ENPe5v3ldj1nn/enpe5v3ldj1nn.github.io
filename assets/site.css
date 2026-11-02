@@ -109,6 +109,35 @@ h1 .line { display: block; }
   display: block; width: 100%; height: auto; border-radius: 28px; border: 7px solid #0c0c0e;
   box-shadow: 0 0 0 2px rgba(255,255,255,.12), 0 30px 60px rgba(0,0,0,.5);
 }
+.rail a { display: block; border-radius: 28px; cursor: zoom-in; }
+.rail a img { transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+.rail a:hover img { transform: translateY(-6px); }
+
+/* Full-screen screenshot viewer (built by /assets/lightbox.js) */
+.lb {
+  width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0;
+  border: 0; background: transparent; color: #fff;
+}
+.lb::backdrop { background: rgba(6, 6, 10, .88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.lb[open] { display: flex; align-items: center; justify-content: center; animation: lb-in .25s ease; }
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+.lb-fig { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 92vw; }
+.lb-img {
+  display: block; height: min(86vh, 1100px); width: auto; max-width: 92vw; object-fit: contain;
+  border-radius: 28px; border: 7px solid #0c0c0e; background: #0c0c0e;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.14), 0 40px 100px rgba(0,0,0,.6);
+}
+.lb-cap { font-size: 14px; opacity: .75; text-align: center; padding: 0 16px; }
+.lb-btn {
+  position: absolute; width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center; font: inherit; font-size: 30px; line-height: 1; color: #fff;
+  background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.28); transition: background .2s, transform .2s;
+}
+.lb-btn:hover { background: rgba(255,255,255,.24); }
+.lb-close { top: 20px; right: 20px; }
+.lb-prev { left: max(16px, 3vw); top: 50%; transform: translateY(-50%); }
+.lb-next { right: max(16px, 3vw); top: 50%; transform: translateY(-50%); }
+.lb-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .rail figcaption { margin-top: 16px; font-size: 14px; line-height: 1.4; opacity: .75; padding: 0 4px; }
 
 .foot {
