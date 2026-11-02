@@ -98,7 +98,7 @@
     font-size: clamp(54px, 8vw, 128px); margin: 16px 0 24px;
   }
   .lead { font-size: 20px; line-height: 1.45; max-width: 440px; opacity: .82; }
-  .btns { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .btns { display: flex; align-items: center; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 15px 24px; border-radius: 99px;
@@ -111,12 +111,9 @@
   .btn.o { border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
   .btn.o:hover { border-color: #fff; }
   .soon {
-    display: inline-block; margin-top: 34px; padding: 13px 22px; border-radius: 99px;
+    display: inline-block; padding: 13px 22px; border-radius: 99px;
     border: 1.5px dashed rgba(255,255,255,.4); font-size: 14px; font-weight: 600; opacity: .85;
   }
-  .legal { margin-top: 22px; font-size: 13px; color: rgba(255,255,255,.62); }
-  .legal a { color: inherit; margin-right: 16px; text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
-  .legal a:hover { color: #fff; }
 
   .dev { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; }
   .ph {
@@ -235,7 +232,6 @@
       <a class="btn p" href="https://play.google.com/store/apps/details?id=com.enpe5v3.neurodash">Google Play ↗</a>
       <a class="btn o" href="/neurodash/">Details</a>
     </div>
-    <p class="legal"><a href="/neurodash/privacy.html">Privacy Policy</a><a href="/neurodash/terms.html">Terms of Use</a></p>
   </div>
   <div class="dev">
     <img class="ph a" src="assets/home/neurodash-target-rush.jpg" width="540" height="1200" alt="NeuroDash Target Rush" loading="lazy">
@@ -255,7 +251,6 @@
       <a class="btn p" href="https://play.google.com/store/apps/details?id=com.enpe5v3.solitairecollection">Google Play ↗</a>
       <a class="btn o" href="/yukon-solitaire/">Details</a>
     </div>
-    <p class="legal"><a href="/yukon-solitaire/privacy.html">Privacy Policy</a><a href="/yukon-solitaire/terms.html">Terms of Use</a></p>
   </div>
   <div class="dev">
     <img class="ph a" src="assets/home/yukon-board.png" width="540" height="1200" alt="Yukon Solitaire board" loading="lazy">
@@ -272,8 +267,8 @@
     <p class="lead">Push every crate onto its goal. 30 levels, unlimited undo, 3 stars per level.</p>
     <div class="btns">
       <span class="soon">Coming soon to Google Play</span>
+      <a class="btn o" href="/sokoban/">Details</a>
     </div>
-    <p class="legal"><a href="/sokoban/">Details</a><a href="/sokoban/privacy.html">Privacy Policy</a></p>
   </div>
 </section>
 
