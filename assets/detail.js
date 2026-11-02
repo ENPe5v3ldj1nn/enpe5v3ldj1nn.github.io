@@ -17,6 +17,22 @@
     });
   }
 
+  // "Copy address" button in the Let's talk block (hidden when the clipboard API is missing).
+  var copyBtn = document.querySelector('.copy');
+  if (copyBtn) {
+    if (!(navigator.clipboard && navigator.clipboard.writeText)) {
+      copyBtn.hidden = true;
+    } else {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(copyBtn.getAttribute('data-mail')).then(function () {
+          copyBtn.textContent = 'Copied ✓';
+          copyBtn.classList.add('done');
+          setTimeout(function () { copyBtn.textContent = 'Copy address'; copyBtn.classList.remove('done'); }, 1800);
+        });
+      });
+    }
+  }
+
   // In-page links (Support) must not add history entries, or Back would stop at this page.
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {

@@ -86,9 +86,9 @@ h1 .line { display: block; }
   display: inline-block; margin-top: 34px; padding: 13px 22px; border-radius: 99px;
   border: 1.5px dashed rgba(255,255,255,.4); font-size: 14px; font-weight: 600; opacity: .85;
 }
-.legal { margin-top: 22px; font-size: 13px; color: rgba(255,255,255,.62); }
-.legal a { color: inherit; margin-right: 16px; text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
-.legal a:hover { color: #fff; }
+.btn.o { border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+.btn.o:hover { border-color: #fff; transform: translateY(-3px); }
+.legal-btns { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* Phones in the hero */
 .dev { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; }
@@ -102,7 +102,7 @@ h1 .line { display: block; }
 /* All screenshots, swipeable */
 /* transparent (body already has --c3) so the hero's shadow can bleed into it instead of being covered */
 .shots { position: relative; padding: 90px 0 40px; }
-.shots h2, .foot h2 {
+.shots h2 {
   font-stretch: 75%; font-weight: 600; letter-spacing: .14em;
   text-transform: uppercase; font-size: 14px; opacity: .7; padding: 0 7vw 26px;
 }
@@ -147,17 +147,35 @@ h1 .line { display: block; }
 .lb-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .rail figcaption { margin-top: 16px; font-size: 14px; line-height: 1.4; opacity: .75; padding: 0 4px; }
 
-.foot {
-  background: var(--night); padding: 80px 7vw 40px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px;
+/* "Let's talk." block, same as the homepage contact chapter */
+.end {
+  position: relative; overflow: hidden; min-height: 100vh; background: var(--night);
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; align-content: center; gap: 60px;
+  padding: 0 7vw;
 }
-.foot h2 { padding: 0 0 18px; }
-.foot .mail { font-size: clamp(20px, 2.6vw, 32px); font-weight: 700; letter-spacing: -.02em; color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.3); transition: .2s; }
-.foot .mail:hover { color: var(--gold); border-color: var(--gold); }
-.foot ul { list-style: none; padding: 0; font-size: 16px; }
-.foot li a { display: block; padding: 12px 0; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.12); transition: .25s; }
-.foot li a:hover { padding-left: 10px; color: var(--gold); }
-.foot small { grid-column: 1 / -1; font-size: 12px; opacity: .45; }
+.end .num {
+  position: absolute; left: 5vw; bottom: -6vw;
+  font-weight: 900; font-stretch: 125%; font-size: 30vw; line-height: 1;
+  opacity: .07; letter-spacing: -.06em; pointer-events: none;
+}
+.end h2 {
+  font-weight: 900; font-stretch: 125%; letter-spacing: -.045em; line-height: .88;
+  font-size: clamp(46px, 6vw, 96px); margin: 16px 0 24px; padding: 0; text-transform: none; opacity: 1;
+}
+.reach { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; position: relative; }
+.mail {
+  font-size: clamp(22px, 3vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1.12;
+  color: #fff; text-decoration: none; padding-bottom: 8px; border-bottom: 3px solid rgba(255,255,255,.35);
+  transition: color .25s, border-color .25s;
+}
+.mail:hover { color: var(--gold); border-color: var(--gold); }
+.copy {
+  font: inherit; font-size: 14px; font-weight: 700; color: #fff; background: none; cursor: pointer;
+  padding: 12px 22px; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.4); transition: .25s;
+}
+.copy:hover { border-color: #fff; }
+.copy.done { border-color: var(--gold); color: var(--gold); }
+.end small { grid-column: 1 / -1; align-self: end; padding-bottom: 30px; font-size: 12px; opacity: .45; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
@@ -165,7 +183,7 @@ h1 .line { display: block; }
   .top { padding: 16px 24px; }
   .hero { grid-template-columns: 1fr; padding: 96px 24px 40px; align-content: start; min-height: 0; }
   h1 { font-size: 15vw; }
-  .lead { font-size: 18px; }
+  .lead { font-size: 18px; max-width: 460px; }
   .gicon { width: 60px; height: 60px; border-radius: 15px; margin-bottom: 20px; }
   .dev { height: auto; padding: 44px 0 8px; align-items: flex-start; }
   .ph { width: 44vw; }
@@ -175,5 +193,7 @@ h1 .line { display: block; }
   .shots h2 { padding: 0 24px 20px; }
   .rail { padding: 8px 24px 30px; scroll-padding: 0 24px; gap: 18px; }
   .rail figure { width: 62vw; max-width: 260px; }
-  .foot { grid-template-columns: 1fr; padding: 56px 24px 32px; }
+  .end { grid-template-columns: 1fr; gap: 24px; padding: 96px 24px 56px; align-content: start; min-height: 0; }
+  .end h2 { font-size: 17vw; }
+  .end .num { font-size: 56vw; bottom: auto; top: 40px; left: auto; right: -4vw; }
 }
