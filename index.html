@@ -19,7 +19,10 @@
     --neurodash-1: #5b1830; --neurodash-2: #1a0a1f; --neurodash-3: #0a0612;   /* crimson */
     --yukon-1: #1c5a45;     --yukon-2: #0b2a22;     --yukon-3: #071a15;       /* felt green */
     --sokoban-1: #6b4b17;   --sokoban-2: #2a1f0d;   --sokoban-3: #12100a;     /* crate amber */
-    --sokoban-tile: #1b2a3a;
+    /* icon halo per game: a bright tint of the game's hue so dark icons read on dark chapters */
+    --neurodash-glow: rgba(255, 77, 109, .55);
+    --yukon-glow: rgba(52, 224, 160, .5);
+    --sokoban-glow: rgba(255, 176, 56, .55);
 
     --apple-bg: #fff;       --apple-fg: #000;
     --play-bg: #01875f;     --play-fg: #fff;
@@ -116,17 +119,19 @@
   .intro .row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 6vh; gap: 30px; flex-wrap: wrap; }
   .intro .lead { opacity: .7; }
   .icons { display: flex; gap: 14px; }
-  .icons img { width: 76px; height: 76px; border-radius: 19px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+  .icons a { display: block; border-radius: 19px; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .icons a:hover { transform: translateY(-6px) scale(1.04); }
+  .icons a:focus-visible { outline-color: var(--ink); }
+  .icons img { display: block; width: 76px; height: 76px; border-radius: 19px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
   .scroll { position: absolute; bottom: 28px; left: 7vw; font-size: 13px; font-weight: 600; letter-spacing: .1em; opacity: .55; }
 
-  .s1 { background: radial-gradient(100% 90% at 80% 50%, var(--yukon-1), var(--yukon-2) 60%, var(--yukon-3)); }
-  .s2 { background: radial-gradient(90% 90% at 80% 40%, var(--neurodash-1), var(--neurodash-2) 60%, var(--neurodash-3)); }
-  .s3 { background: radial-gradient(90% 90% at 78% 50%, var(--sokoban-1), var(--sokoban-2) 60%, var(--sokoban-3)); }
-  .card3 {
-    width: min(360px, 34vw); aspect-ratio: 1; background: var(--sokoban-tile); border-radius: 44px;
-    display: grid; place-items: center; box-shadow: 0 60px 100px rgba(0,0,0,.55); transform: rotate(-4deg);
+  .s1 { --glow: var(--yukon-glow); background: radial-gradient(100% 90% at 80% 50%, var(--yukon-1), var(--yukon-2) 60%, var(--yukon-3)); }
+  .s2 { --glow: var(--neurodash-glow); background: radial-gradient(90% 90% at 80% 40%, var(--neurodash-1), var(--neurodash-2) 60%, var(--neurodash-3)); }
+  .s3 { --glow: var(--sokoban-glow); background: radial-gradient(90% 90% at 78% 50%, var(--sokoban-1), var(--sokoban-2) 60%, var(--sokoban-3)); }
+  .gicon {
+    display: block; width: 72px; height: 72px; border-radius: 18px; margin-bottom: 26px;
+    box-shadow: 0 0 0 2px rgba(255,255,255,.55), 0 0 34px 4px var(--glow), 0 16px 36px rgba(0,0,0,.45);
   }
-  .card3 img { width: 62%; border-radius: 28px; }
 
   .end { background: var(--night); grid-template-columns: 1fr 1fr; align-content: center; gap: 60px; }
   .end h2 { font-size: clamp(46px, 6vw, 96px); }
@@ -157,7 +162,7 @@
     .ph { width: 44vw; }
     .ph.a { transform: rotate(-5deg) translateX(-2vw); }
     .ph.b { position: relative; width: 40vw; margin-left: -8vw; transform: rotate(6deg) translateY(34px); }
-    .card3 { width: 64vw; }
+    .gicon { width: 60px; height: 60px; border-radius: 15px; margin-bottom: 20px; }
     .end { grid-template-columns: 1fr; gap: 24px; }
     .end h2 { font-size: 17vw; }
     .links .grp b { min-width: 100%; }
@@ -185,9 +190,9 @@
     <div class="row">
       <p class="lead">Small, focused mobile games — built to be picked up in a spare minute and hard to put back down.</p>
       <div class="icons">
-        <img src="assets/icon-neurodash.png" alt="NeuroDash icon">
-        <img src="assets/icon-yukon.png" alt="Yukon Solitaire icon">
-        <img src="assets/icon-sokoban.png" alt="Sokoban icon">
+        <a href="#neurodash" aria-label="NeuroDash"><img src="assets/icon-neurodash.png" alt="NeuroDash icon"></a>
+        <a href="#yukon" aria-label="Yukon Solitaire"><img src="assets/icon-yukon.png" alt="Yukon Solitaire icon"></a>
+        <a href="#sokoban" aria-label="Sokoban"><img src="assets/icon-sokoban.png" alt="Sokoban icon"></a>
       </div>
     </div>
   </div>
@@ -197,6 +202,7 @@
 <section class="s2" id="neurodash">
   <span class="num">01</span>
   <div>
+    <img class="gicon" src="assets/icon-neurodash.png" width="72" height="72" alt="">
     <span class="kicker">Reaction &amp; memory training</span>
     <h2>Neuro<br>Dash</h2>
     <p class="lead">Fast-paced training. Tap, dodge fakes, and remember chains.</p>
@@ -216,6 +222,7 @@
 <section class="s1" id="yukon">
   <span class="num">02</span>
   <div>
+    <img class="gicon" src="assets/icon-yukon.png" width="72" height="72" alt="">
     <span class="kicker">Card game</span>
     <h2>Yukon<br>Solitaire</h2>
     <p class="lead">No stock pile. Move any face-up card with the pile on top of it.</p>
@@ -235,6 +242,7 @@
 <section class="s3" id="sokoban">
   <span class="num">03</span>
   <div>
+    <img class="gicon" src="assets/icon-sokoban.png" width="72" height="72" alt="">
     <span class="kicker">Puzzle</span>
     <h2>Sokoban</h2>
     <p class="lead">Push every crate onto its goal. 30 levels, unlimited undo, 3 stars per level.</p>
@@ -242,9 +250,6 @@
       <span class="soon">Coming soon to Google Play</span>
     </div>
     <p class="legal"><a href="/sokoban/">Details</a><a href="/sokoban/privacy.html">Privacy Policy</a></p>
-  </div>
-  <div class="dev">
-    <div class="card3"><img src="assets/icon-sokoban.png" width="512" height="512" alt="Sokoban icon" loading="lazy"></div>
   </div>
 </section>
 
