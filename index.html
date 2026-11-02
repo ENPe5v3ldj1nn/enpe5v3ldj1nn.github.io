@@ -133,6 +133,13 @@
     box-shadow: 0 0 0 2px rgba(255,255,255,.55), 0 0 34px 4px var(--glow), 0 16px 36px rgba(0,0,0,.45);
   }
 
+  /* Anchor the chapter text instead of centering it, so the matching "Details" page lines up
+     (same rule lives in assets/site.css). */
+  @media (min-width: 900px) {
+    .s1 > div:first-of-type, .s2 > div:first-of-type, .s3 > div:first-of-type {
+      align-self: start; padding-top: clamp(96px, 17vh, 200px); padding-bottom: 60px;
+    }
+  }
   .end { background: var(--night); grid-template-columns: 1fr 1fr; align-content: center; gap: 60px; }
   .end h2 { font-size: clamp(46px, 6vw, 96px); }
   .reach { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; position: relative; }

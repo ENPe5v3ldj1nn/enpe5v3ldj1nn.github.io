@@ -34,20 +34,27 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .top {
   position: absolute; top: 0; left: 0; right: 0; z-index: 2;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 22px 7vw; font-size: 14px; font-weight: 600;
+  padding: 22px 28px 22px 7vw; font-size: 14px; font-weight: 600;
 }
 .top a { color: #fff; text-decoration: none; opacity: .85; transition: opacity .2s; }
 .top a:hover { opacity: 1; }
+/* the back link matches the homepage logo weight: bold, full white */
+.top a:first-child { font-weight: 700; opacity: 1; }
 
 .hero {
   /* clip sideways only: overflow:hidden also cut the phones' shadow at the hero's bottom edge, which showed as a hard line */
   position: relative; overflow-x: clip; overflow-y: visible; min-height: 100vh;
   display: grid; grid-template-columns: 1.1fr 1fr; align-items: center;
-  padding: 110px 7vw 60px;
+  padding: 0 7vw;
   /* the top layer fades the hero into the flat page colour so no hard edge shows under it */
   background:
     linear-gradient(to bottom, transparent 55%, var(--c3) 100%),
     radial-gradient(100% 90% at 80% 45%, var(--c1), var(--c2) 60%, var(--c3));
+}
+/* Same text-column anchor as the homepage chapters, so opening "Details" from a chapter
+   keeps the icon, title and phones where they were instead of re-centering on the longer text. */
+@media (min-width: 900px) {
+  .hero > div:first-of-type { align-self: start; padding-top: clamp(96px, 17vh, 200px); padding-bottom: 60px; }
 }
 .gicon {
   display: block; width: 72px; height: 72px; border-radius: 18px; margin-bottom: 26px;
@@ -62,7 +69,7 @@ h1 {
   font-size: clamp(54px, 8vw, 128px); margin: 16px 0 24px;
 }
 h1 .line { display: block; }
-.lead { font-size: 18px; line-height: 1.55; max-width: 460px; opacity: .85; }
+.lead { font-size: 18px; line-height: 1.55; max-width: min(460px, 40vw); opacity: .85; }
 
 .btns { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
 .btn {
@@ -84,12 +91,12 @@ h1 .line { display: block; }
 .legal a:hover { color: #fff; }
 
 /* Phones in the hero */
-.dev { position: relative; height: min(100vh, 780px); display: flex; justify-content: center; align-items: center; }
+.dev { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; }
 .ph {
   width: min(300px, 28vw); height: auto; border-radius: 38px; border: 9px solid #0c0c0e;
   box-shadow: 0 0 0 2px rgba(255,255,255,.13), 0 60px 100px rgba(0,0,0,.6); position: relative;
 }
-.ph.a { transform: rotate(-6deg) translateX(-40px); z-index: 2; }
+.ph.a { transform: rotate(-6deg) translateX(-70px); z-index: 2; }
 .ph.b { transform: rotate(7deg) translateX(40px) translateY(60px); position: absolute; opacity: .95; width: min(270px, 25vw); }
 
 /* All screenshots, swipeable */
