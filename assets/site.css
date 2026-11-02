@@ -177,6 +177,38 @@ h1 .line { display: block; }
 .copy.done { border-color: var(--gold); color: var(--gold); }
 .end small { grid-column: 1 / -1; align-self: end; padding-bottom: 30px; font-size: 12px; opacity: .45; }
 
+/* Legal documents (privacy / terms): sticky title on the left, readable text on the right.
+   Text content is the original document; only the markup around it changed. */
+.doc-wrap {
+  display: grid; grid-template-columns: minmax(280px, 1fr) minmax(0, 760px); gap: 6vw; align-items: start;
+  padding: 150px 7vw 90px;
+  background: radial-gradient(70% 55% at 12% 0%, var(--c1), transparent 72%), var(--c3);
+}
+.doc-head { position: sticky; top: 110px; }
+.doc-head h1 { font-size: clamp(38px, 4.4vw, 68px); margin: 14px 0 18px; overflow-wrap: anywhere; }
+.doc-head .updated { font-size: 14px; opacity: .7; }
+.doc { font-size: 16.5px; line-height: 1.72; color: rgba(255,255,255,.84); }
+.doc > p { margin: 0 0 16px; }
+.doc strong { color: #fff; }
+.doc h2 {
+  font-size: 24px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; color: #fff;
+  margin: 52px 0 14px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.12);
+}
+.doc h3 { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin: 28px 0 8px; opacity: .8; }
+.doc ul { list-style: none; padding: 0; margin: 0 0 18px; }
+.doc li { position: relative; padding-left: 22px; margin: 0 0 10px; }
+.doc li::before {
+  content: ""; position: absolute; left: 2px; top: .72em; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--glow); box-shadow: 0 0 10px var(--glow);
+}
+.doc a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); text-underline-offset: 3px; transition: text-decoration-color .2s; }
+.doc a:hover { text-decoration-color: #fff; }
+.doc-foot {
+  background: var(--night); padding: 60px 7vw 50px;
+  display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between;
+}
+.doc-foot .btns { margin: 0; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
 @media (max-width: 899px) {
@@ -196,4 +228,10 @@ h1 .line { display: block; }
   .end { grid-template-columns: 1fr; gap: 24px; padding: 96px 24px 56px; align-content: start; min-height: 0; }
   .end h2 { font-size: 17vw; }
   .end .num { font-size: 56vw; bottom: auto; top: 40px; left: auto; right: -4vw; }
+  .doc-wrap { grid-template-columns: 1fr; gap: 28px; padding: 100px 24px 56px; }
+  .doc-head { position: static; }
+  .doc-head h1 { font-size: 12vw; }
+  .doc { font-size: 16px; }
+  .doc h2 { font-size: 21px; margin-top: 40px; }
+  .doc-foot { padding: 48px 24px 40px; }
 }

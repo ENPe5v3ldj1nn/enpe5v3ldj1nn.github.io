@@ -4,84 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Yukon Solitaire: Move Any Card</title>
-<style>
-  :root {
-    --felt-dark: #0b3d2e;
-    --felt: #12523f;
-    --gold: #e8c56b;
-    --gold-soft: #f3dfa3;
-    --text: #f4f1e8;
-    --text-muted: #b9c9c0;
-    --card-bg: #0f4536;
-    --border: rgba(232, 197, 107, 0.25);
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 50% -10%, var(--felt) 0%, var(--felt-dark) 55%, #06251c 100%);
-    display: flex;
-    justify-content: center;
-    padding: 56px 20px 80px;
-  }
-  .wrap { max-width: 700px; width: 100%; }
-  .back {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-bottom: 24px;
-  }
-  .back:hover { color: var(--gold); }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px 44px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  }
-  h1 {
-    font-size: 30px;
-    margin: 0 0 6px;
-    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .updated { font-size: 13px; color: var(--text-muted); margin: 0 0 28px; }
-  h2 {
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    margin: 32px 0 12px;
-  }
-  p, li { font-size: 15px; line-height: 1.7; color: var(--text); }
-  p { margin: 0 0 12px; }
-  ul { margin: 0 0 12px; padding-left: 22px; }
-  a { color: var(--gold-soft); }
-  a:hover { color: var(--gold); }
-  strong { color: var(--gold-soft); }
-  footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="theme-yukon">
 
-<div class="wrap">
-  <a class="back" href="/">← Molfar Digital</a>
-  <div class="card">
+<nav class="top"><a href="/yukon-solitaire/">← Yukon Solitaire</a><a href="/">Molfar Digital</a></nav>
+
+<div class="doc-wrap">
+  <header class="doc-head">
+    <img class="gicon" src="/assets/icon-yukon.png" width="72" height="72" alt="">
+    <span class="kicker">Yukon Solitaire</span>
     <h1>Privacy Policy</h1>
     <p class="updated"><strong>Last updated:</strong> August 2026</p>
+  </header>
 
+  <main class="doc">
     <p>This Privacy Policy describes how the app ("we", "the App") collects, uses, and shares information when you use our solitaire card games (Klondike, Spider, Yukon).</p>
 
     <h2>Information We Collect</h2>
@@ -125,9 +65,17 @@
     <h2>Contact Us</h2>
     <p>If you have questions about this Privacy Policy, contact us at: <strong>enpe5v3ldj1nnhelper@gmail.com</strong></p>
 
-    <footer>Yukon Solitaire: Move Any Card — Privacy Policy</footer>
-  </div>
+    
+  </main>
 </div>
 
+<section class="doc-foot">
+  <div class="btns">
+    <a class="btn o" href="/yukon-solitaire/">← Yukon Solitaire</a>
+    <a class="btn o" href="/yukon-solitaire/terms.html">Terms of Use</a>
+  </div>
+</section>
+
+<script src="/assets/detail.js" defer></script>
 </body>
 </html>

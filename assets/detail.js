@@ -1,15 +1,18 @@
 /* Small behaviours shared by the game detail pages. */
 (function () {
-  // "← Molfar Digital": when the visitor came from the homepage, go Back so the browser
-  // restores the exact scroll position. The link's own href (/#<game>) is the fallback and
-  // lands on that game's chapter when the page was opened directly.
+  // The first top link ("← Molfar Digital" on a Details page, "← <game>" on a legal page):
+  // when the visitor came from the page it points to, go Back so the browser restores the
+  // exact scroll position. Otherwise the link's own href is the fallback (e.g. /#<game>
+  // lands on that game's chapter when the page was opened directly).
   var back = document.querySelector('.top a[href]');
   if (back) {
     back.addEventListener('click', function (e) {
       try {
         var ref = document.referrer ? new URL(document.referrer) : null;
-        var fromHome = ref && ref.origin === location.origin && (ref.pathname === '/' || ref.pathname === '/index.html');
-        if (fromHome && history.length > 1) {
+        var target = new URL(back.href, location.href).pathname;
+        var fromTarget = ref && ref.origin === location.origin &&
+          (ref.pathname === target || (target === '/' && ref.pathname === '/index.html'));
+        if (fromTarget && history.length > 1) {
           e.preventDefault();
           history.back();
         }
