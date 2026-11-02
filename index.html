@@ -50,7 +50,7 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 5;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 22px 7vw; font-size: 14px; font-weight: 600;
+    padding: 22px 28px 22px 7vw; font-size: 14px; font-weight: 600;
     mix-blend-mode: difference; color: #fff;
   }
   nav ul { display: flex; gap: 26px; list-style: none; padding: 0; }
@@ -135,17 +135,19 @@
 
   .end { background: var(--night); grid-template-columns: 1fr 1fr; align-content: center; gap: 60px; }
   .end h2 { font-size: clamp(46px, 6vw, 96px); }
-  .links { display: grid; font-size: 18px; }
-  .links a, .links .grp {
-    color: #fff; text-decoration: none; padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between; gap: 16px;
+  .reach { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; position: relative; }
+  .mail {
+    font-size: clamp(22px, 3vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1.12;
+    color: #fff; text-decoration: none; padding-bottom: 8px; border-bottom: 3px solid rgba(255,255,255,.35);
+    transition: color .25s, border-color .25s;
   }
-  .links a { transition: .25s; }
-  .links a:hover { padding-left: 12px; color: var(--gold); }
-  .links .grp { font-size: 15px; opacity: .85; flex-wrap: wrap; justify-content: flex-start; gap: 6px 22px; align-items: baseline; }
-  .links .grp b { font-weight: 700; min-width: 130px; }
-  .links .grp a { padding: 0; border: 0; font-size: 15px; display: inline; text-decoration: underline; text-underline-offset: 3px; }
-  .links .grp a:hover { padding-left: 0; }
+  .mail:hover { color: var(--gold); border-color: var(--gold); }
+  .copy {
+    font: inherit; font-size: 14px; font-weight: 700; color: #fff; background: none; cursor: pointer;
+    padding: 12px 22px; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.4); transition: .25s;
+  }
+  .copy:hover { border-color: #fff; }
+  .copy.done { border-color: var(--gold); color: var(--gold); }
   .foot { grid-column: 1 / -1; font-size: 12px; opacity: .45; align-self: end; padding-bottom: 30px; }
 
   @media (max-width: 899px) {
@@ -165,7 +167,6 @@
     .gicon { width: 60px; height: 60px; border-radius: 15px; margin-bottom: 20px; }
     .end { grid-template-columns: 1fr; gap: 24px; }
     .end h2 { font-size: 17vw; }
-    .links .grp b { min-width: 100%; }
   }
 </style>
 </head>
@@ -176,7 +177,6 @@
   <ul>
     <li><a href="#neurodash">Games</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact">Legal</a></li>
   </ul>
 </nav>
 <div class="dots" aria-hidden="true">
@@ -254,15 +254,15 @@
 </section>
 
 <section class="end" id="contact">
+  <span class="num" aria-hidden="true">@</span>
   <div>
     <span class="kicker">Contact</span>
     <h2>Let's<br>talk.</h2>
   </div>
-  <div class="links">
-    <a href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com <span>→</span></a>
-    <div class="grp"><b>NeuroDash</b><a href="/neurodash/privacy.html">Privacy Policy</a><a href="/neurodash/terms.html">Terms of Use</a></div>
-    <div class="grp"><b>Yukon Solitaire</b><a href="/yukon-solitaire/privacy.html">Privacy Policy</a><a href="/yukon-solitaire/terms.html">Terms of Use</a></div>
-    <div class="grp"><b>Sokoban</b><a href="/sokoban/privacy.html">Privacy Policy</a></div>
+  <div class="reach">
+    <p class="lead">Questions, feedback, bug reports or ideas — drop me a line.</p>
+    <a class="mail" href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@<wbr>gmail.com</a>
+    <button class="copy" type="button" data-mail="enpe5v3ldj1nnhelper@gmail.com">Copy address</button>
   </div>
   <span class="foot">© 2026 Molfar Digital</span>
 </section>
@@ -281,6 +281,21 @@
         history.replaceState(null, '', '#' + t.id);
       });
     });
+
+    var copyBtn = document.querySelector('.copy');
+    if (copyBtn) {
+      if (!(navigator.clipboard && navigator.clipboard.writeText)) {
+        copyBtn.hidden = true;
+      } else {
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(copyBtn.getAttribute('data-mail')).then(function () {
+            copyBtn.textContent = 'Copied ✓';
+            copyBtn.classList.add('done');
+            setTimeout(function () { copyBtn.textContent = 'Copy address'; copyBtn.classList.remove('done'); }, 1800);
+          });
+        });
+      }
+    }
 
     var dots = document.querySelectorAll('.dots a');
     var secs = document.querySelectorAll('section');
