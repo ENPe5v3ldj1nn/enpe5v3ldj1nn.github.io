@@ -4,214 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yukon Solitaire: Move Any Card</title>
-<style>
-  :root {
-    --felt-dark: #0b3d2e;
-    --felt: #12523f;
-    --gold: #e8c56b;
-    --gold-soft: #f3dfa3;
-    --text: #f4f1e8;
-    --text-muted: #b9c9c0;
-    --card-bg: #0f4536;
-    --border: rgba(232, 197, 107, 0.25);
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 50% -10%, var(--felt) 0%, var(--felt-dark) 55%, #06251c 100%);
-    display: flex;
-    justify-content: center;
-    padding: 64px 20px;
-    overflow-x: hidden;
-  }
-  .wrap { max-width: 640px; width: 100%; position: relative; z-index: 1; }
-  .back {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-bottom: 24px;
-  }
-  .back:hover { color: var(--gold); }
-  .suits {
-    font-size: 22px;
-    letter-spacing: 14px;
-    color: var(--gold);
-    opacity: 0.85;
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-size: 32px;
-    margin: 0 0 16px;
-    letter-spacing: 0.5px;
-    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .desc {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text);
-    margin: 0 0 36px;
-  }
-  .links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .links a {
-    color: var(--felt-dark);
-    background: var(--gold);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 18px;
-    border-radius: 8px;
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-  .links a:hover { background: var(--gold-soft); transform: translateY(-1px); }
-  .bg-shots {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .bg-shots img {
-    position: absolute;
-    width: 260px;
-    aspect-ratio: 9 / 20;
-    object-fit: cover;
-    border-radius: 26px;
-    filter: saturate(1.1) contrast(1.03);
-    opacity: 1;
-    box-shadow: 0 0 60px 4px rgba(232, 197, 107, 0.22), inset 0 0 0 1px rgba(232, 197, 107, 0.35);
-  }
-  .bg-shots::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% 30%, rgba(11,61,46,0.15) 0%, var(--felt-dark) 100%);
-  }
-  .bg-shots img:nth-child(6n+1) { top: -4vh; left: -1vw; transform: rotate(-12deg); }
-  .bg-shots img:nth-child(6n+2) { top: 4vh; right: -2vw; transform: rotate(10deg); }
-  .bg-shots img:nth-child(6n+3) { top: 38vh; left: -4vw; transform: rotate(7deg); }
-  .bg-shots img:nth-child(6n+4) { top: 34vh; right: 9vw; transform: rotate(-8deg); }
-  .bg-shots img:nth-child(6n+5) { bottom: -4vh; left: 9vw; transform: rotate(-6deg); }
-  .bg-shots img:nth-child(6n+6) { bottom: -2vh; right: -1vw; transform: rotate(9deg); }
-  @media (max-width: 640px) {
-    .bg-shots img { width: 170px; opacity: 0.6; }
-  }
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--felt-dark);
-    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 14px 24px;
-    border-radius: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 8px 24px rgba(232, 197, 107, 0.2);
-  }
-  .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(232, 197, 107, 0.3); }
-  .cta.secondary {
-    color: #0b3d2e;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
-  }
-  .cta.secondary:hover { filter: brightness(0.94); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.18); }
-  .stores {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-  }
-  h2 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    margin: 40px 0 12px;
-  }
-  .support a {
-    color: var(--gold-soft);
-    font-size: 14px;
-  }
-  footer {
-    margin-top: 56px;
-    font-size: 12px;
-    color: var(--text-muted);
-    opacity: 0.7;
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="theme-yukon">
 
-<div class="bg-shots" id="bg-shots"></div>
+<header class="hero">
+  <nav class="top"><a href="/">← Molfar Digital</a><a href="#support">Support</a></nav>
 
-<div class="wrap">
-  <a class="back" href="/">← Molfar Digital</a>
-  <div class="suits">♠ ♥ ♦ ♣</div>
-  <h1>Yukon Solitaire: Move Any Card</h1>
-  <p class="desc">
-    No stock pile — all 52 cards are dealt face up, so you're solving the
-    board in front of you, not waiting on the next draw. Every deal is
-    solver-verified, undo is unlimited, and Klondike &amp; Spider are
-    included. No account, no internet, no setup.
-  </p>
-
-  <div class="stores">
-    <a class="cta" href="https://play.google.com/store/apps/details?id=com.enpe5v3.solitairecollection" target="_blank" rel="noopener">
-      ▶ Get it on Google Play
-    </a>
-    <a class="cta secondary" href="https://apps.apple.com/app/id6805578129" target="_blank" rel="noopener">
-      <svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 0 189.3 0 287.6c0 29 5.3 59 15.9 90.1 14.1 41.8 65.1 144.2 118.3 142.5 27.8-.7 47.5-19.8 83.9-19.8 35.4 0 53.6 19.8 84.7 19.8 53.6-.8 99.7-94.3 113.1-136.2-72-34-97.2-99.4-97.2-115.3zM255.2 76.3c30.5-36.3 27.6-69.3 26.7-81.3-26.7 1.6-57.6 18.2-75.2 38.6-19.5 21.6-31 48.4-28.5 78 27.5 2.1 56.4-14 77-35.3z"/></svg>
-      Download on the App Store
-    </a>
+  <div>
+    <img class="gicon" src="/assets/icon-yukon.png" width="72" height="72" alt="">
+    <span class="kicker">Move any card</span>
+    <h1>Yukon <span class="line">Solitaire</span></h1>
+    <p class="lead">
+      No stock pile — all 52 cards are dealt face up, so you're solving the
+      board in front of you, not waiting on the next draw. Every deal is
+      solver-verified, undo is unlimited, and Klondike &amp; Spider are
+      included. No account, no internet, no setup.
+    </p>
+    <div class="btns">
+      <a class="btn f" href="https://apps.apple.com/app/id6805578129" target="_blank" rel="noopener">
+        <svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 0 189.3 0 287.6c0 29 5.3 59 15.9 90.1 14.1 41.8 65.1 144.2 118.3 142.5 27.8-.7 47.5-19.8 83.9-19.8 35.4 0 53.6 19.8 84.7 19.8 53.6-.8 99.7-94.3 113.1-136.2-72-34-97.2-99.4-97.2-115.3zM255.2 76.3c30.5-36.3 27.6-69.3 26.7-81.3-26.7 1.6-57.6 18.2-75.2 38.6-19.5 21.6-31 48.4-28.5 78 27.5 2.1 56.4-14 77-35.3z"/></svg>
+        Download on the App Store
+      </a>
+      <a class="btn p" href="https://play.google.com/store/apps/details?id=com.enpe5v3.solitairecollection" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5z"/></svg>
+        Get it on Google Play
+      </a>
+    </div>
+    <p class="legal"><a href="/yukon-solitaire/privacy.html">Privacy Policy</a><a href="/yukon-solitaire/terms.html">Terms of Use</a></p>
   </div>
 
-  <div class="links">
-    <a href="/yukon-solitaire/privacy.html">Privacy Policy</a>
-    <a href="/yukon-solitaire/terms.html">Terms of Use</a>
+  <div class="dev">
+    <img class="ph a" src="/assets/yukon/shot-1.png" width="540" height="1200" alt="Yukon Solitaire board with every card face up">
+    <img class="ph b" src="/assets/yukon/shot-3.png" width="540" height="1200" alt="Klondike, draw 1">
   </div>
+</header>
 
-  <h2>Support</h2>
-  <div class="support">
-    <a href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com</a>
+<section class="shots" id="screens">
+  <h2>Screens</h2>
+  <div class="rail">
+    <figure><img src="/assets/yukon/shot-1.png" width="540" height="1200" alt="Yukon board, no stock pile" loading="lazy"><figcaption>Move any face-up card. No stock pile.</figcaption></figure>
+    <figure><img src="/assets/yukon/shot-2.png" width="540" height="1200" alt="Unlimited undo" loading="lazy"><figcaption>Unlimited undo — no penalty</figcaption></figure>
+    <figure><img src="/assets/yukon/shot-3.png" width="540" height="1200" alt="Klondike, draw 1" loading="lazy"><figcaption>Klondike, Draw 1</figcaption></figure>
+    <figure><img src="/assets/yukon/shot-4.png" width="540" height="1200" alt="Spider, one suit" loading="lazy"><figcaption>Spider, one suit</figcaption></figure>
+    <figure><img src="/assets/yukon/shot-5.png" width="540" height="1200" alt="Personal records screen" loading="lazy"><figcaption>Your record, not a stranger's</figcaption></figure>
+    <figure><img src="/assets/yukon/shot-6.png" width="540" height="1200" alt="One tap to finish the game" loading="lazy"><figcaption>One tap to finish</figcaption></figure>
   </div>
+</section>
 
-  <footer>© 2026 Molfar Digital</footer>
-</div>
-
-<script>
-  // List every file dropped into /yukon-solitaire/screenshots/ here —
-  // each one gets inserted as a frame automatically.
-  (function () {
-    var files = [
-      '01_Move_any_face-up_card._No_stock_pile..png',
-      '02_Unlimited_undo_—_no_penalty.png',
-      '03_Klondike,_Draw_1.png',
-      '04_Spider,_one_suit.png',
-      "05_Your_record,_not_a_stranger's.png",
-      '06_One_tap_to_finish.png'
-    ];
-    var layer = document.getElementById('bg-shots');
-    files.forEach(function (file) {
-      var img = new Image();
-      img.onload = function () { layer.appendChild(img); };
-      img.src = 'screenshots/' + encodeURIComponent(file);
-    });
-  })();
-</script>
+<footer class="foot" id="support">
+  <div>
+    <h2>Support</h2>
+    <a class="mail" href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com</a>
+  </div>
+  <div>
+    <h2>Legal</h2>
+    <ul>
+      <li><a href="/yukon-solitaire/privacy.html">Privacy Policy</a></li>
+      <li><a href="/yukon-solitaire/terms.html">Terms of Use</a></li>
+    </ul>
+  </div>
+  <small>© 2026 Molfar Digital</small>
+</footer>
 
 </body>
 </html>

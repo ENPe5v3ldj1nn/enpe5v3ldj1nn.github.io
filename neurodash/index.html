@@ -4,211 +4,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeuroDash — Reaction &amp; Memory Training</title>
-<style>
-  :root {
-    --bg-dark: #0a0e1a;
-    --bg: #0f1420;
-    --card-bg: #141a2b;
-    --border: rgba(139, 92, 246, 0.2);
-    --purple: #8b5cf6;
-    --cyan: #22d3ee;
-    --orange: #f97316;
-    --text: #f4f6fb;
-    --text-muted: #8b92a8;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 50% -10%, #1a1030 0%, var(--bg-dark) 55%, #06070d 100%);
-    display: flex;
-    justify-content: center;
-    padding: 64px 20px;
-    overflow-x: hidden;
-  }
-  .wrap { max-width: 640px; width: 100%; position: relative; z-index: 1; }
-  .back {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-bottom: 24px;
-  }
-  .back:hover { color: var(--cyan); }
-  h1 {
-    font-size: 32px;
-    margin: 0 0 16px;
-    letter-spacing: 0.5px;
-    background: linear-gradient(90deg, var(--purple), var(--cyan));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .desc {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text);
-    margin: 0 0 36px;
-  }
-  .stores {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #fff;
-    background: linear-gradient(90deg, var(--purple), var(--cyan));
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 14px 24px;
-    border-radius: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
-  }
-  .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35); }
-  .bg-shots {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .bg-shots img {
-    position: absolute;
-    width: 260px;
-    aspect-ratio: 9 / 20;
-    object-fit: cover;
-    border-radius: 26px;
-    filter: saturate(1.1) contrast(1.03);
-    opacity: 1;
-    box-shadow: 0 0 60px 4px rgba(139, 92, 246, 0.28), inset 0 0 0 1px rgba(34, 211, 238, 0.35);
-  }
-  .bg-shots::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% 30%, rgba(26,16,48,0.15) 0%, var(--bg-dark) 100%);
-  }
-  .bg-shots img:nth-child(6n+1) { top: -4vh; left: -1vw; transform: rotate(-12deg); }
-  .bg-shots img:nth-child(6n+2) { top: 4vh; right: -2vw; transform: rotate(10deg); }
-  .bg-shots img:nth-child(6n+3) { top: 38vh; left: -4vw; transform: rotate(7deg); }
-  .bg-shots img:nth-child(6n+4) { top: 34vh; right: 9vw; transform: rotate(-8deg); }
-  .bg-shots img:nth-child(6n+5) { bottom: -4vh; left: 9vw; transform: rotate(-6deg); }
-  .bg-shots img:nth-child(6n+6) { bottom: -2vh; right: -1vw; transform: rotate(9deg); }
-  @media (max-width: 640px) {
-    .bg-shots img { width: 170px; opacity: 0.6; }
-  }
-  .cta.secondary {
-    color: #0a0e1a;
-    background: #ffffff;
-    border: 1px solid transparent;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
-  }
-  .cta.secondary:hover { filter: brightness(0.94); transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.18); }
-  .cta.secondary svg { flex: none; }
-  .links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 18px;
-  }
-  .links a {
-    color: var(--text-muted);
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 18px;
-    border-radius: 8px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .links a:hover { color: var(--cyan); border-color: var(--cyan); }
-  h2 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cyan);
-    margin: 40px 0 12px;
-  }
-  .support a {
-    color: var(--text);
-    font-size: 14px;
-    text-decoration: none;
-  }
-  .support a:hover { color: var(--cyan); }
-  footer {
-    margin-top: 56px;
-    font-size: 12px;
-    color: var(--text-muted);
-    opacity: 0.7;
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="theme-neurodash">
 
-<div class="bg-shots" id="bg-shots"></div>
+<header class="hero">
+  <nav class="top"><a href="/">← Molfar Digital</a><a href="#support">Support</a></nav>
 
-<div class="wrap">
-  <a class="back" href="/">← Molfar Digital</a>
-  <h1>NeuroDash</h1>
-  <p class="desc">
-    A fast-paced reaction and memory trainer. Tap moving and shrinking
-    targets, dodge fakes, memorize chains and grids, then track your
-    accuracy, streaks, and best times across a personal daily plan.
-    No account, no setup — just open it and train.
-  </p>
-
-  <div class="stores">
-    <a class="cta" href="https://play.google.com/store/apps/details?id=com.enpe5v3.neurodash" target="_blank" rel="noopener">
-      ▶ Get it on Google Play
-    </a>
-    <a class="cta secondary" href="https://apps.apple.com/app/id6775243664" target="_blank" rel="noopener">
-      <svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 0 189.3 0 287.6c0 29 5.3 59 15.9 90.1 14.1 41.8 65.1 144.2 118.3 142.5 27.8-.7 47.5-19.8 83.9-19.8 35.4 0 53.6 19.8 84.7 19.8 53.6-.8 99.7-94.3 113.1-136.2-72-34-97.2-99.4-97.2-115.3zM255.2 76.3c30.5-36.3 27.6-69.3 26.7-81.3-26.7 1.6-57.6 18.2-75.2 38.6-19.5 21.6-31 48.4-28.5 78 27.5 2.1 56.4-14 77-35.3z"/></svg>
-      Download on the App Store
-    </a>
+  <div>
+    <img class="gicon" src="/assets/icon-neurodash.png" width="72" height="72" alt="">
+    <span class="kicker">Reaction &amp; memory training</span>
+    <h1>Neuro<span class="line">Dash</span></h1>
+    <p class="lead">
+      A fast-paced reaction and memory trainer. Tap moving and shrinking
+      targets, dodge fakes, memorize chains and grids, then track your
+      accuracy, streaks, and best times across a personal daily plan.
+      No account, no setup — just open it and train.
+    </p>
+    <div class="btns">
+      <a class="btn f" href="https://apps.apple.com/app/id6775243664" target="_blank" rel="noopener">
+        <svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 0 189.3 0 287.6c0 29 5.3 59 15.9 90.1 14.1 41.8 65.1 144.2 118.3 142.5 27.8-.7 47.5-19.8 83.9-19.8 35.4 0 53.6 19.8 84.7 19.8 53.6-.8 99.7-94.3 113.1-136.2-72-34-97.2-99.4-97.2-115.3zM255.2 76.3c30.5-36.3 27.6-69.3 26.7-81.3-26.7 1.6-57.6 18.2-75.2 38.6-19.5 21.6-31 48.4-28.5 78 27.5 2.1 56.4-14 77-35.3z"/></svg>
+        Download on the App Store
+      </a>
+      <a class="btn p" href="https://play.google.com/store/apps/details?id=com.enpe5v3.neurodash" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5z"/></svg>
+        Get it on Google Play
+      </a>
+    </div>
+    <p class="legal"><a href="/neurodash/privacy.html">Privacy Policy</a><a href="/neurodash/terms.html">Terms of Use</a></p>
   </div>
 
-  <div class="links">
-    <a href="/neurodash/privacy.html">Privacy Policy</a>
-    <a href="/neurodash/terms.html">Terms of Use</a>
+  <div class="dev">
+    <img class="ph a" src="/assets/neurodash/shot-3.jpg" width="540" height="1200" alt="NeuroDash Target Rush mode">
+    <img class="ph b" src="/assets/neurodash/shot-2.jpg" width="540" height="1200" alt="NeuroDash mode list">
   </div>
+</header>
 
-  <h2>Support</h2>
-  <div class="support">
-    <a href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com</a>
+<section class="shots" id="screens">
+  <h2>Screens</h2>
+  <div class="rail">
+    <figure><img src="/assets/neurodash/shot-1.jpg" width="540" height="1200" alt="NeuroDash home screen with the daily challenge" loading="lazy"><figcaption>One daily challenge, same for everyone</figcaption></figure>
+    <figure><img src="/assets/neurodash/shot-2.jpg" width="540" height="1200" alt="NeuroDash reaction and memory modes" loading="lazy"><figcaption>Reaction and memory modes</figcaption></figure>
+    <figure><img src="/assets/neurodash/shot-3.jpg" width="540" height="1200" alt="NeuroDash Target Rush setup" loading="lazy"><figcaption>Pick format and difficulty</figcaption></figure>
+    <figure><img src="/assets/neurodash/shot-4.jpg" width="540" height="1200" alt="NeuroDash mid-run, a target on screen" loading="lazy"><figcaption>Tap the target, keep your lives</figcaption></figure>
+    <figure><img src="/assets/neurodash/shot-5.jpg" width="540" height="1200" alt="NeuroDash result screen with stats" loading="lazy"><figcaption>Times, streaks and accuracy after every run</figcaption></figure>
   </div>
+</section>
 
-  <footer>© 2026 Molfar Digital</footer>
-</div>
-
-<script>
-  // List every file dropped into /neurodash/screenshots/ here —
-  // each one gets inserted as a frame automatically.
-  (function () {
-    var files = [
-      'Image Sequence_032_0000.jpg',
-      'Image Sequence_033_0000.jpg',
-      'Image Sequence_035_0000.jpg',
-      'Image Sequence_036_0000.jpg',
-      'Image Sequence_037_0000.jpg'
-    ];
-    var layer = document.getElementById('bg-shots');
-    files.forEach(function (file) {
-      var img = new Image();
-      img.onload = function () { layer.appendChild(img); };
-      img.src = 'screenshots/' + encodeURIComponent(file);
-    });
-  })();
-</script>
+<footer class="foot" id="support">
+  <div>
+    <h2>Support</h2>
+    <a class="mail" href="mailto:enpe5v3ldj1nnhelper@gmail.com">enpe5v3ldj1nnhelper@gmail.com</a>
+  </div>
+  <div>
+    <h2>Legal</h2>
+    <ul>
+      <li><a href="/neurodash/privacy.html">Privacy Policy</a></li>
+      <li><a href="/neurodash/terms.html">Terms of Use</a></li>
+    </ul>
+  </div>
+  <small>© 2026 Molfar Digital</small>
+</footer>
 
 </body>
 </html>

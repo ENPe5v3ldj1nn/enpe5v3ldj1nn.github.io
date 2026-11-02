@@ -1,0 +1,143 @@
+/* Shared styles for the game detail pages (neurodash/, yukon-solitaire/, sokoban/).
+   The homepage keeps its own inline CSS; keep the palette tokens below in sync with
+   the :root block in /index.html. */
+
+:root {
+  --night: #0d0d0d;
+  --gold: #f5c542;
+
+  --neurodash-1: #5b1830; --neurodash-2: #1a0a1f; --neurodash-3: #0a0612;   /* crimson */
+  --yukon-1: #1c5a45;     --yukon-2: #0b2a22;     --yukon-3: #071a15;       /* felt green */
+  --sokoban-1: #6b4b17;   --sokoban-2: #2a1f0d;   --sokoban-3: #12100a;     /* crate amber */
+  --neurodash-glow: rgba(255, 77, 109, .55);
+  --yukon-glow: rgba(52, 224, 160, .5);
+  --sokoban-glow: rgba(255, 176, 56, .55);
+
+  --apple-bg: #fff;       --apple-fg: #000;
+  --play-bg: #1ed48a;     --play-fg: #04130d;
+}
+
+/* One class on <body> picks the game's hue. */
+.theme-neurodash { --c1: var(--neurodash-1); --c2: var(--neurodash-2); --c3: var(--neurodash-3); --glow: var(--neurodash-glow); }
+.theme-yukon     { --c1: var(--yukon-1);     --c2: var(--yukon-2);     --c3: var(--yukon-3);     --glow: var(--yukon-glow); }
+.theme-sokoban   { --c1: var(--sokoban-1);   --c2: var(--sokoban-2);   --c3: var(--sokoban-3);   --glow: var(--sokoban-glow); }
+
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  background: var(--c3);
+}
+a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.top {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 7vw; font-size: 14px; font-weight: 600;
+}
+.top a { color: #fff; text-decoration: none; opacity: .85; transition: opacity .2s; }
+.top a:hover { opacity: 1; }
+
+.hero {
+  /* clip sideways only: overflow:hidden also cut the phones' shadow at the hero's bottom edge, which showed as a hard line */
+  position: relative; overflow-x: clip; overflow-y: visible; min-height: 100vh;
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center;
+  padding: 110px 7vw 60px;
+  /* the top layer fades the hero into the flat page colour so no hard edge shows under it */
+  background:
+    linear-gradient(to bottom, transparent 55%, var(--c3) 100%),
+    radial-gradient(100% 90% at 80% 45%, var(--c1), var(--c2) 60%, var(--c3));
+}
+.gicon {
+  display: block; width: 72px; height: 72px; border-radius: 18px; margin-bottom: 26px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.55), 0 0 34px 4px var(--glow), 0 16px 36px rgba(0,0,0,.45);
+}
+.kicker {
+  font-stretch: 75%; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; font-size: 14px; opacity: .7;
+}
+h1 {
+  font-weight: 900; font-stretch: 125%; letter-spacing: -.045em; line-height: .88;
+  font-size: clamp(54px, 8vw, 128px); margin: 16px 0 24px;
+}
+h1 .line { display: block; }
+.lead { font-size: 18px; line-height: 1.55; max-width: 460px; opacity: .85; }
+
+.btns { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 24px; border-radius: 99px;
+  font-weight: 700; font-size: 15px; text-decoration: none; transition: .3s;
+}
+.btn svg { flex: none; }
+.btn.f { background: var(--apple-bg); color: var(--apple-fg); }
+.btn.p { background: var(--play-bg); color: var(--play-fg); }
+.btn.f:hover, .btn.p:hover { transform: translateY(-3px); }
+.btn.p:hover { filter: brightness(1.12); }
+.soon {
+  display: inline-block; margin-top: 34px; padding: 13px 22px; border-radius: 99px;
+  border: 1.5px dashed rgba(255,255,255,.4); font-size: 14px; font-weight: 600; opacity: .85;
+}
+.legal { margin-top: 22px; font-size: 13px; color: rgba(255,255,255,.62); }
+.legal a { color: inherit; margin-right: 16px; text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.legal a:hover { color: #fff; }
+
+/* Phones in the hero */
+.dev { position: relative; height: min(100vh, 780px); display: flex; justify-content: center; align-items: center; }
+.ph {
+  width: min(300px, 28vw); height: auto; border-radius: 38px; border: 9px solid #0c0c0e;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.13), 0 60px 100px rgba(0,0,0,.6); position: relative;
+}
+.ph.a { transform: rotate(-6deg) translateX(-40px); z-index: 2; }
+.ph.b { transform: rotate(7deg) translateX(40px) translateY(60px); position: absolute; opacity: .95; width: min(270px, 25vw); }
+
+/* All screenshots, swipeable */
+/* transparent (body already has --c3) so the hero's shadow can bleed into it instead of being covered */
+.shots { position: relative; padding: 90px 0 40px; }
+.shots h2, .foot h2 {
+  font-stretch: 75%; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; font-size: 14px; opacity: .7; padding: 0 7vw 26px;
+}
+.rail {
+  display: flex; gap: 24px; overflow-x: auto; padding: 8px 7vw 40px;
+  scroll-snap-type: x proximity; scroll-padding: 0 7vw; scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) transparent;
+}
+.rail figure { flex: none; width: 240px; scroll-snap-align: start; }
+.rail img {
+  display: block; width: 100%; height: auto; border-radius: 28px; border: 7px solid #0c0c0e;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.12), 0 30px 60px rgba(0,0,0,.5);
+}
+.rail figcaption { margin-top: 16px; font-size: 14px; line-height: 1.4; opacity: .75; padding: 0 4px; }
+
+.foot {
+  background: var(--night); padding: 80px 7vw 40px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px;
+}
+.foot h2 { padding: 0 0 18px; }
+.foot .mail { font-size: clamp(20px, 2.6vw, 32px); font-weight: 700; letter-spacing: -.02em; color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.3); transition: .2s; }
+.foot .mail:hover { color: var(--gold); border-color: var(--gold); }
+.foot ul { list-style: none; padding: 0; font-size: 16px; }
+.foot li a { display: block; padding: 12px 0; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.12); transition: .25s; }
+.foot li a:hover { padding-left: 10px; color: var(--gold); }
+.foot small { grid-column: 1 / -1; font-size: 12px; opacity: .45; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+@media (max-width: 899px) {
+  .top { padding: 16px 24px; }
+  .hero { grid-template-columns: 1fr; padding: 96px 24px 40px; align-content: start; min-height: 0; }
+  h1 { font-size: 15vw; }
+  .lead { font-size: 18px; }
+  .gicon { width: 60px; height: 60px; border-radius: 15px; margin-bottom: 20px; }
+  .dev { height: auto; padding: 44px 0 8px; align-items: flex-start; }
+  .ph { width: 44vw; }
+  .ph.a { transform: rotate(-5deg) translateX(-2vw); }
+  .ph.b { position: relative; width: 40vw; margin-left: -8vw; transform: rotate(6deg) translateY(34px); }
+  .shots { padding: 60px 0 20px; }
+  .shots h2 { padding: 0 24px 20px; }
+  .rail { padding: 8px 24px 30px; scroll-padding: 0 24px; gap: 18px; }
+  .rail figure { width: 62vw; max-width: 260px; }
+  .foot { grid-template-columns: 1fr; padding: 56px 24px 32px; }
+}
