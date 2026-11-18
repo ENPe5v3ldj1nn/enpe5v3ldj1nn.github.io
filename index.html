@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Molfar Digital — Games</title>
-<meta name="description" content="Molfar Digital — indie games made solo: NeuroDash, Yukon Solitaire, and Sokoban. Available on the App Store and Google Play.">
+<meta name="description" content="Molfar Digital — indie games made solo: NeuroDash, Yukon Solitaire, Sokoban, and Ember Ages. Available on the App Store and Google Play.">
 <meta name="google-site-verification" content="FrnDaDeCvtXjpjMwdNEfwW1JGXkOoqlDsSgeE6CCiUE" />
 <link rel="canonical" href="https://enpe5v3ldj1nn.github.io/">
 <link rel="icon" href="assets/molfar-digital-icon.png">
@@ -12,13 +12,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Molfar Digital">
 <meta property="og:title" content="Molfar Digital — Games">
-<meta property="og:description" content="Indie games made solo: NeuroDash, Yukon Solitaire, and Sokoban.">
+<meta property="og:description" content="Indie games made solo: NeuroDash, Yukon Solitaire, Sokoban, and Ember Ages.">
 <meta property="og:url" content="https://enpe5v3ldj1nn.github.io/">
 <meta property="og:image" content="https://enpe5v3ldj1nn.github.io/assets/molfar-digital-icon.png">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Molfar Digital — Games">
-<meta name="twitter:description" content="Indie games made solo: NeuroDash, Yukon Solitaire, and Sokoban.">
+<meta name="twitter:description" content="Indie games made solo: NeuroDash, Yukon Solitaire, Sokoban, and Ember Ages.">
 <meta name="twitter:image" content="https://enpe5v3ldj1nn.github.io/assets/molfar-digital-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,9 +37,11 @@
     --yukon-1: #1c5a45;     --yukon-2: #0b2a22;     --yukon-3: #071a15;       /* felt green */
     --sokoban-1: #6b4b17;   --sokoban-2: #2a1f0d;   --sokoban-3: #12100a;     /* crate amber */
     /* icon halo per game: a bright tint of the game's hue so dark icons read on dark chapters */
+    --ember-1: #7a2a0c;     --ember-2: #2b0f08;     --ember-3: #140806;       /* lava ember */
     --neurodash-glow: rgba(255, 77, 109, .55);
     --yukon-glow: rgba(52, 224, 160, .5);
     --sokoban-glow: rgba(255, 176, 56, .55);
+    --ember-glow: rgba(255, 110, 40, .55);
 
     --apple-bg: #fff;       --apple-fg: #000;
     --play-bg: #1ed48a;     --play-fg: #04130d;
@@ -155,6 +157,7 @@
   .s1 { --glow: var(--yukon-glow); background: radial-gradient(100% 90% at 80% 50%, var(--yukon-1), var(--yukon-2) 60%, var(--yukon-3)); }
   .s2 { --glow: var(--neurodash-glow); background: radial-gradient(90% 90% at 80% 40%, var(--neurodash-1), var(--neurodash-2) 60%, var(--neurodash-3)); }
   .s3 { --glow: var(--sokoban-glow); background: radial-gradient(90% 90% at 78% 50%, var(--sokoban-1), var(--sokoban-2) 60%, var(--sokoban-3)); }
+  .s4 { --glow: var(--ember-glow); background: radial-gradient(90% 90% at 78% 50%, var(--ember-1), var(--ember-2) 60%, var(--ember-3)); }
   .gicon {
     display: block; width: 72px; height: 72px; border-radius: 18px; margin-bottom: 26px;
     box-shadow: 0 0 0 2px rgba(255,255,255,.55), 0 0 34px 4px var(--glow), 0 16px 36px rgba(0,0,0,.45);
@@ -163,7 +166,7 @@
   /* Anchor the chapter text instead of centering it, so the matching "Details" page lines up
      (same rule lives in assets/site.css). */
   @media (min-width: 900px) {
-    .s1 > div:first-of-type, .s2 > div:first-of-type, .s3 > div:first-of-type {
+    .s1 > div:first-of-type, .s2 > div:first-of-type, .s3 > div:first-of-type, .s4 > div:first-of-type {
       align-self: start; padding-top: clamp(96px, 17vh, 200px); padding-bottom: 60px;
     }
   }
@@ -215,7 +218,7 @@
   </ul>
 </nav>
 <div class="dots" aria-hidden="true">
-  <a href="#top" class="on"></a><a href="#neurodash"></a><a href="#yukon"></a><a href="#sokoban"></a><a href="#contact"></a>
+  <a href="#top" class="on"></a><a href="#neurodash"></a><a href="#yukon"></a><a href="#sokoban"></a><a href="#ember"></a><a href="#contact"></a>
 </div>
 
 <a class="to-top" href="#top" aria-label="Back to top">
@@ -232,6 +235,7 @@
         <a href="#neurodash" aria-label="NeuroDash"><img src="assets/icon-neurodash.png" alt="NeuroDash icon"></a>
         <a href="#yukon" aria-label="Yukon Solitaire"><img src="assets/icon-yukon.png" alt="Yukon Solitaire icon"></a>
         <a href="#sokoban" aria-label="Sokoban"><img src="assets/icon-sokoban.png" alt="Sokoban icon"></a>
+        <a href="#ember" aria-label="Ember Ages"><img src="assets/icon-ember.png" alt="Ember Ages icon"></a>
       </div>
     </div>
   </div>
@@ -286,6 +290,20 @@
     <div class="btns">
       <span class="soon">Coming soon to Google Play</span>
       <a class="btn o" href="/sokoban/">Details</a>
+    </div>
+  </div>
+</section>
+
+<section class="s4" id="ember">
+  <span class="num">04</span>
+  <div>
+    <img class="gicon" src="assets/icon-ember.png" width="72" height="72" alt="">
+    <span class="kicker">Idle war strategy</span>
+    <h2>Ember<br>Ages</h2>
+    <p class="lead">Spawn warriors, break the enemy gate and grow your tribe between battles.</p>
+    <div class="btns">
+      <span class="soon">Coming soon to Google Play</span>
+      <a class="btn o" href="/ember-ages/">Details</a>
     </div>
   </div>
 </section>

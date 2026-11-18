@@ -9,9 +9,11 @@
   --neurodash-1: #5b1830; --neurodash-2: #1a0a1f; --neurodash-3: #0a0612;   /* crimson */
   --yukon-1: #1c5a45;     --yukon-2: #0b2a22;     --yukon-3: #071a15;       /* felt green */
   --sokoban-1: #6b4b17;   --sokoban-2: #2a1f0d;   --sokoban-3: #12100a;     /* crate amber */
+  --ember-1: #7a2a0c;     --ember-2: #2b0f08;     --ember-3: #140806;       /* lava ember */
   --neurodash-glow: rgba(255, 77, 109, .55);
   --yukon-glow: rgba(52, 224, 160, .5);
   --sokoban-glow: rgba(255, 176, 56, .55);
+  --ember-glow: rgba(255, 110, 40, .55);
 
   --apple-bg: #fff;       --apple-fg: #000;
   --play-bg: #1ed48a;     --play-fg: #04130d;
@@ -21,6 +23,7 @@
 .theme-neurodash { --c1: var(--neurodash-1); --c2: var(--neurodash-2); --c3: var(--neurodash-3); --glow: var(--neurodash-glow); }
 .theme-yukon     { --c1: var(--yukon-1);     --c2: var(--yukon-2);     --c3: var(--yukon-3);     --glow: var(--yukon-glow); }
 .theme-sokoban   { --c1: var(--sokoban-1);   --c2: var(--sokoban-2);   --c3: var(--sokoban-3);   --glow: var(--sokoban-glow); }
+.theme-ember     { --c1: var(--ember-1);     --c2: var(--ember-2);     --c3: var(--ember-3);     --glow: var(--ember-glow); }
 
 * { box-sizing: border-box; margin: 0; }
 body {
